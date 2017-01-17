@@ -3,6 +3,8 @@
 OV7670 camera;
 
 void setup() {
+  Wire.begin();
+
   Serial.begin(9600);
   while (!Serial);
 

@@ -14,8 +14,10 @@ void OV7670::begin()
   String message;
 
   Serial.println("Initialise OV7670 Camera ...");
-  
+
+  byte value;
   error = setValue(COM7, COM7_VALUE_RESET); 
+  //error = getValue(COM7, &value);
   message = to_string(error);
   Serial.println("Camera reset COM7: " + message);
 }
@@ -118,19 +120,19 @@ String OV7670::to_string(OV7670::ErrorType error)
     break;
     
     case OV7670::ErrorType::I2C_WRITE_START_ADDRESS:
-      result = "I2C_ERROR_WRITING_START_ADDRESS";
+      result = "I2C_WRITE_START_ADDRESS";
     break;
     
     case OV7670::ErrorType::I2C_WRITE_DATA:
-      result = "I2C_ERROR_WRITING_DATA";
+      result = "I2C_WRITE_DATA";
     break;
     
     case OV7670::ErrorType::I2C_NACK_TRANSMIT_ADDRESS:
-      result = "NACK_ON_TRANSMIT_OF_ADDRESS";
+      result = "I2C_NACK_TRANSMIT_ADDRESS";
     break;
     
     case OV7670::ErrorType::I2C_NACK_TRANSMIT_DATA:
-      result = "NACK_ON_TRANSMIT_OF_DATA";
+      result = "I2C_NACK_TRANSMIT_DATA";
     break;
 
     case OV7670::ErrorType::I2C_READ_START_ADDRESS:
